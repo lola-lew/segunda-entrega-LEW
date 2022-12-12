@@ -1,10 +1,3 @@
-
-const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
-let productoIngresado = prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: ");
-
-
-
-
 class Producto {
   constructor (nombre, precio) {
     this.nombre = nombre;
@@ -24,19 +17,23 @@ const colibri = new Producto ("Colibrí", 2.4);
 const articulos = [robot, mono, ciervo, mariposas, dragon, chica3d, harryPotter, colibri];
 console.log(articulos);
 
+const articulosCarrito = [];
 
-function pregunta (articulos) {
-  const articulosCarrito = [];
-  while (productoIngresado === articulos.nombre) {
-    articulosCarrito.push(articulos.precio);
-    
-    pregunta();
-  } if (productoIngresado === "T") {
-    return articulosCarrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-  }
+function carrito () {
+
+  const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
+  let productoIngresado = prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: ");
+
+  articulos.map (art => {
+    if(productoIngresado === art.nombre) {
+      articulosCarrito.push(art.precio);
+
+    }
+  })    
 }
 
-pregunta();
+
+carrito();
 console.log(articulosCarrito);
 
 
