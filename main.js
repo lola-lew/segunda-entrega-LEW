@@ -1,8 +1,9 @@
-const articulos = [robot, mono, ciervo, mariposas, dragon, chica3d, harryPotter, colibri];
-const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
-let productoIngresado = parseInt(prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: "));
 
-const articulosCarrito = [];
+const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
+let productoIngresado = prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: ");
+
+
+
 
 class Producto {
   constructor (nombre, precio) {
@@ -20,10 +21,15 @@ const chica3d = new Producto ("Chica3D", 2.7);
 const harryPotter = new Producto ("Harry Potter", 3.5);
 const colibri = new Producto ("Colibrí", 2.4);
 
+const articulos = [robot, mono, ciervo, mariposas, dragon, chica3d, harryPotter, colibri];
+console.log(articulos);
 
-function pregunta () {
-  while (productoIngresado === Producto.nombre) {
-    return articulosCarrito.push();
+
+function pregunta (articulos) {
+  const articulosCarrito = [];
+  while (productoIngresado === articulos.nombre) {
+    articulosCarrito.push(articulos.precio);
+    
     pregunta();
   } if (productoIngresado === "T") {
     return articulosCarrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
