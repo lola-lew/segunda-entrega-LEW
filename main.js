@@ -20,14 +20,16 @@ console.log(articulos);
 const articulosCarrito = [];
 
 function carrito () {
-
   const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
   let productoIngresado = prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: ");
+}
+
+function armarCarrito () {
 
   articulos.map (art => {
     if(productoIngresado === art.nombre) {
       articulosCarrito.push(art.precio);
-
+      carrito ();
     }
   })    
 }
