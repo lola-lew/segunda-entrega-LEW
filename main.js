@@ -4,8 +4,9 @@ let usuario = prompt("Hola! Ingrese su nombre de usuario por favor: ");
 // Si el usuario no ingresa nada lo vuelvo a solicitar
 if (usuario === "") {
   inicio();
-}
+  } else {
 let saludo = alert("¡Ya puedes comprar y vender " + usuario + "!");
+  }
 }
 
 inicio();
