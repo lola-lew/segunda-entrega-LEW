@@ -1,41 +1,55 @@
+function inicio () {
+// Solicito nombre de usuario
+let usuario = prompt("Hola! Ingrese su nombre de usuario por favor: ");
+// Si el usuario no ingresa nada lo vuelvo a solicitar
+if (usuario === "") {
+  inicio();
+}
+let saludo = alert("¡Ya puedes comprar y vender " + usuario + "!");
+}
+
+inicio();
+
+// Constructor de productos
 class Producto {
-  constructor (nombre, precio) {
+  constructor (nombre, precio, id) {
     this.nombre = nombre;
     this.precio = precio;
+    this.id = id
   }
 }
 
-const robot = new Producto ("Robot", 8.4);
-const mono = new Producto ("Mono", 7.6);
-const ciervo = new Producto ("Ciervo", 5.9);
-const mariposas = new Producto ("Mariposas", 3.2);
-const dragon = new Producto ("Dragón", 4.8);
-const chica3d = new Producto ("Chica3D", 2.7);
-const harryPotter = new Producto ("Harry Potter", 3.5);
-const colibri = new Producto ("Colibrí", 2.4);
+// Productos
+const kanpaiPandas = new Producto ("Kanpai Pandas", 8.4, 1);
+const cryptoPunks = new Producto ("Crypto Punks", 7.6, 2);
+const boredApe = new Producto ("Bored Ape Yacht Club", 5.9, 3);
+const wonderPals = new Producto ("Wonder Pals", 3.2, 4);
 
-const articulos = [robot, mono, ciervo, mariposas, dragon, chica3d, harryPotter, colibri];
-console.log(articulos);
+// Array de productos
+const articulos = [kanpaiPandas, cryptoPunks, boredApe, wonderPals];
 
-const articulosCarrito = [];
+// Array de productos vacía en la cual se iran almacenando los precios de los productos seleccionados
+const arrayProductos = [];
 
-function carrito () {
-  const listadoProductos = alert("Estos son los productos disponibles: Robot, Mono, Ciervo, Mariposas, Dragón, Chica3D, Harry Potter, Colibrí.");
-  let productoIngresado = prompt("Ingrese el nombre del producto que desea agregar al carrito e ingrese T para calcular el total: ");
+function elegirProducto () {
+  // Le pido al usuario ingresar número del producto que quiere
+  let eleccionUser = parseInt(prompt("Escriba el número del producto que desea: "));
+  // Busco el producto solicitado
+  let productoElegido = articulos.find (el => el.id === eleccionUser);
+  console.log(productoElegido);
+  // Si el usuario ingreso un dato inválido le vuelvo a pedir que ingrese el número del producto
+  if (productoElegido === undefined) {
+    alert("Ingrese un número válido por favor");
+    elegirProducto();
+  }
+  // Armo la arrayProductos con los precios de los productos elegidos por el usuario
+  arrayProductos.push(productoElegido.precio);
 }
 
-function armarCarrito () {
-
-  articulos.map (art => {
-    if(productoIngresado === art.nombre) {
-      articulosCarrito.push(art.precio);
-      carrito ();
-    }
-  })    
-}
-
-
-carrito();
-console.log(articulosCarrito);
-
-
+function finalizarCompra () {
+  // Sumatoria de los precios de los productos elegidos por el usuario
+  let totalPrecio = arrayProductos.reduce((acumulador, producto) => acumulador + producto, 0);
+  // Alert con el monto total
+  alert("El total de su compra es " + totalPrecio + " ETH")
+  alert("Gracias por elegir Mi-Tienda para adquirir NFT's =)")
+};
